@@ -1,7 +1,7 @@
 import os, shutil
 
 # Define directories with the original data, and your train/test/validation splits
-original_dataset_dir = './kaggle/train'  # Downloaded and unzipped from https://www.kaggle.com/c/dogs-vs-cats/data
+original_dataset_dir = '../kaggle/train'  # Downloaded and unzipped from https://www.kaggle.com/c/dogs-vs-cats/data
 base_dir = 'cats_and_dogs_small'
 os.mkdir(base_dir)
 

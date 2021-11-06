@@ -8,6 +8,7 @@ validation_dir = 'cats_and_dogs_small/validation/'
 
 # Create the data generators (each should be an instance of ImageDataGenerator)
 # Rescale all images from the [0...255] range to the [0...1] range
+# Use the ImageDataGenerator class to intialize two generators
 train_datagen = ImageDataGenerator(
     rescale = 1./150
 )
