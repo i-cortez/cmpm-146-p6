@@ -2,32 +2,36 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing import image
 import matplotlib.pyplot as plt
 
-train_dir = 'dogs-vs-cats/train/train'
-test_dir = 'dogs-vs-cats/train/test/test'
+train_dir = 'cats_and_dogs_small/train/'
+test_dir = 'cats_and_dogs_small/test/'
 validation_dir = 'cats_and_dogs_small/validation/'
 
 # Create the data generators (each should be an instance of ImageDataGenerator)
 # Rescale all images from the [0...255] range to the [0...1] range
 # Use the ImageDataGenerator class to intialize two generators
 train_datagen = ImageDataGenerator(
-    rescale = 1./150
+    # Original images consist in RGB coefficients in the 0-255 range
+    # target values between 0 and 1 by scaling with a 1./255 factor
+    rescale = 1./255
 )
 test_datagen = ImageDataGenerator(
-    rescale = 1./150
+    # Original images consist in RGB coefficients in the 0-255 range
+    # target values between 0 and 1 by scaling with a 1./255 factor
+    rescale = 1./255
 )
 
 # Call flow_from_directory on each of your datagen objects
 train_generator = train_datagen.flow_from_directory(
-    train_dir,
-    target_size = (150,150),
+    train_dir, # target directory
+    target_size = (150, 150), # resize images
     batch_size = 20,
-    class_mode='binary'
+    class_mode='binary' # specify binary lables
 )
 test_generator = test_datagen.flow_from_directory(
-    test_dir,
-    target_size = (150,150),
+    test_dir, # target directory
+    target_size = (150, 150), # resize images
     batch_size = 20,
-    class_mode='binary'
+    class_mode='binary' # specity binary lables
 )
 validation_generator = None  # TODO: Student
 
