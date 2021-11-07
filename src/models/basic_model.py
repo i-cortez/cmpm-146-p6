@@ -5,6 +5,22 @@ from tensorflow.keras import optimizers
 # Define a sequential model here
 model = models.Sequential()
 # add more layers to the model...
+# A CNN using some number of convolutional and maxpooling
+model.add(layers.Conv2D(32, (7, 7), activation="relu", input_shape=(3, 150, 150)))
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+model.add(layers.Conv2D(32, (7, 7), activation="relu"))
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+model.add(layers.Conv2D(64, (7, 7), activation="relu"))
+model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+# A single flatten layer
+model.add(layers.Flatten())
+model.add(layers.Dense(64))
+# A hidden densely connected layer
+model.add(layers.Activation("relu"))
+# A final densely connected layer that outputs a single number
+model.add(layers.Dense(1))
+model.add(layers.Activation("sigmoid"))
+
 
 # Then, call model.compile()
 model.compile(
