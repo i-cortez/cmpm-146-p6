@@ -39,4 +39,5 @@ def plot(history):
     plt.legend()
     plt.show()
 
+print(history.history.keys())
 plot(history)

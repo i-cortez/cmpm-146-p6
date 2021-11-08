@@ -33,7 +33,12 @@ test_generator = test_datagen.flow_from_directory(
     batch_size = 20,
     class_mode='binary' # specity binary lables
 )
-validation_generator = None  # TODO: Student
+validation_generator = test_datagen.flow_from_directory(
+    validation_dir, # target directory
+    target_size = (150, 150), # resize images
+    batch_size = 20,
+    class_mode='binary' # specity binary lables
+)
 
 # Usage Example:
 for data_batch, labels_batch in train_generator:
