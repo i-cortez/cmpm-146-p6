@@ -6,7 +6,7 @@ from tensorflow.keras import optimizers
 model = models.Sequential()
 # add more layers to the model...
 # A CNN using some number of convolutional and maxpooling
-model.add(layers.Conv2D(32, (7, 7), activation="relu", input_shape=(3, 150, 150)))
+model.add(layers.Conv2D(32, (7, 7), padding="same", activation="relu"))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Conv2D(32, (7, 7), activation="relu"))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
