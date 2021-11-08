@@ -12,7 +12,9 @@ history = model.fit_generator(
     epochs=30,
     validation_data=validation_generator,
     validation_steps=50
-    )
+)
+
+model.summary()
 
 # Save the model weights
 # Change the name of this file to avoid overwriting previously trained models
