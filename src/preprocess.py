@@ -10,22 +10,25 @@ validation_dir = 'cats_and_dogs_small/validation/'
 # Rescale all images from the [0...255] range to the [0...1] range
 # Use the ImageDataGenerator class to intialize two generators
 train_datagen = ImageDataGenerator(
-    #rotation_range=30,
-    #width_shift_range=0.2,
-    #height_shift_range=0.2,
-    # Original images consist in RGB coefficients in the 0-255 range
-    # target values between 0 and 1 by scaling with a 1./255 factor
+    rotation_range=20,
     rescale = 1./255,
     shear_range=0.2,
     zoom_range=0.2,
-    horizontal_flip=True,
-    #fill_mode="nearest"
+    horizontal_flip=True
 )
+
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
 # Call flow_from_directory on each of your datagen objects
 train_generator = train_datagen.flow_from_directory(
     train_dir, # target directory
+    target_size = (150, 150), # resize images
+    batch_size = 20,
+    class_mode='binary' # specify binary lables
+)
+
+test_generator = train_datagen.flow_from_directory(
+    test_dir, # target directory
     target_size = (150, 150), # resize images
     batch_size = 20,
     class_mode='binary' # specify binary lables
@@ -64,3 +67,5 @@ def show_example_images(datagen):
         if i % 4 == 0:
             break
     plt.show()
+
+    

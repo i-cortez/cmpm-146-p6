@@ -13,15 +13,27 @@ test_labels = np.load("results/test_labels.npy")
 
 # Train the classifier from the features
 model = models.Sequential()
-# TODO Student - define the model architecture
+model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dropout(0.5))
+model.add(layers.Dense(1, activation='sigmoid'))
+
+model.compile(
+    loss='binary_crossentropy',
+    optimizer=optimizers.RMSprop(lr=1e-4),
+    metrics=['acc']
+)
 
 history = model.fit(
     train_features,
     train_labels,
-    epochs=30,
+    epochs=10,
     batch_size=20,
     validation_data=(validation_features, validation_labels)
 )
+
+model.summary()
+
+model.save('cats_and_dogs_small_best.h5')
 
 # Plot the results
 import matplotlib.pyplot as plt

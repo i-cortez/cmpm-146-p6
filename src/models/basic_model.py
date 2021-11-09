@@ -16,7 +16,7 @@ model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Flatten())
 model.add(layers.Dense(64))
 # A dropout layer ro randomly set the imputs of layers to zero
-model.add(layers.Dropout(0.5))
+model.add(layers.Dropout(0.2))
 # A hidden densely connected layer
 model.add(layers.Activation("relu"))
 # A final densely connected layer that outputs a single number
